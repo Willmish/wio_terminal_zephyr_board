@@ -1,5 +1,5 @@
-identifier: adafruit_itsybitsy_m4_express
-name: Adafruit ItsyBitsy M4 Express
+identifier: wio_terminal 
+name: Wio Terminal 
 type: mcu
 arch: arm
 ram: 192

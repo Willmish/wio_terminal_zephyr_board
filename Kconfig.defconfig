@@ -1,8 +1,8 @@
-# Adafruit ItsyBitsy M4 Express board configuration
+# Wio Terminal  board configuration
 
-# Copyright (c) 2020 Google LLC.
+# Copyright (c) 2021 Szymon Duchniewicz 
 # SPDX-License-Identifier: Apache-2.0
 
 config BOARD
-	default "adafruit_itsybitsy_m4_express"
-	depends on BOARD_ADAFRUIT_ITSYBITSY_M4_EXPRESS
+	default "wio_terminal"
+	depends on BOARD_WIO_TERMINAL
