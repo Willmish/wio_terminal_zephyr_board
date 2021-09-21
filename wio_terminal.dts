@@ -13,8 +13,8 @@
 	compatible = "seeed,wio-terminal";
 
 	chosen {
-		zephyr,console = &sercom3;
-		zephyr,shell-uart = &sercom3;
+		zephyr,console = &sercom2;
+		zephyr,shell-uart = &sercom2;
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
 		zephyr,code-partition = &code_partition;
@@ -23,6 +23,9 @@
 	/* These aliases are provided for compatibility with samples */
 	aliases {
 		led0 = &led0;
+        sw0 = &user_button_0;
+        sw1 = &user_button_1;
+        sw2 = &user_button_2;
 		//pwm-led0 = &pwm_led0;
 		//pwm-0 = &tcc0;
 	};
@@ -33,6 +36,21 @@
 			gpios = <&porta 15 0>;
 			label = "LED";
 		};
+    gpio_keys {
+        compatible = "gpio-keys";
+        user_button_0: button_0 {
+        label = "User Button 0";
+        gpios = <&portc 26 1>;
+        };
+        user_button_1: button_1 {
+        label = "User Button 1";
+        gpios = <&portc 27 1>;
+        };
+        user_button_2: button_2 {
+        label = "User Button 2";
+        gpios = <&portc 28 1>;
+        };
+    };
 	};
 
 	//pwmleds {
@@ -47,7 +65,17 @@
 	clock-frequency = <120000000>;
 };
 
-&sercom3 {
+&sercom1 {
+    status = "okay";
+    compatible = "atmel,sam0-uart";
+    current-speed = <115200>;
+    rxpo = <1>;
+    txpo = <0>;
+
+    pinctrl-0 = <&pc22c_sercom1_pad0 &pc23c_sercom1_pad1>;
+};
+
+&sercom2 {
 	status = "okay";
 	compatible = "atmel,sam0-uart";
 	current-speed = <115200>;
@@ -57,6 +85,15 @@
     pinctrl-0 = <&pb27c_sercom2_pad1 &pb26c_sercom2_pad0>;
 };
 
+//&sercom4 {
+//	status = "okay";
+//	compatible = "atmel,sam0-uart";
+//	current-speed = <115200>;
+//	rxpo = <1>;
+//	txpo = <0>;
+//
+//    pinctrl-0 = <&pb27d_sercom4_pad0 &pb26d_sercom4_pad1>;
+//};
 //&sercom1 {
 //	status = "okay";
 //	compatible = "atmel,sam0-spi";
@@ -75,7 +112,7 @@
 //	#pwm-cells = <1>;
 //};
 //
-&usb0 {
+zephyr_udc0: &usb0 {
 	status = "okay";
 };
 //
