@@ -85,41 +85,7 @@
     pinctrl-0 = <&pb27c_sercom2_pad1 &pb26c_sercom2_pad0>;
 };
 
-//&sercom4 {
-//	status = "okay";
-//	compatible = "atmel,sam0-uart";
-//	current-speed = <115200>;
-//	rxpo = <1>;
-//	txpo = <0>;
-//
-//    pinctrl-0 = <&pb27d_sercom4_pad0 &pb26d_sercom4_pad1>;
-//};
-//&sercom1 {
-//	status = "okay";
-//	compatible = "atmel,sam0-spi";
-//	dipo = <3>;
-//	dopo = <0>;
-//
-//	#address-cells = <1>;
-//	#size-cells = <0>;
-//};
-//
-//&tcc0 {
-//	status = "okay";
-//	compatible = "atmel,sam0-tcc-pwm";
-//	prescaler = <8>;
-//
-//	#pwm-cells = <1>;
-//};
-//
-zephyr_udc0: &usb0 {
-    compatible = "atmel,sam0-usb";
-	status = "okay";
 
-    seeed_cdc_acm_uart: seeed_cdc_acm_uart {
-            compatible = "zephyr,cdc-acm-uart";
-            label = "CDC_ACM_0";
-};
 //
 //&dmac {
 //	status = "okay";
@@ -153,4 +119,14 @@ zephyr_udc0: &usb0 {
 		//	reg = <0x7c000 DT_SIZE_K(16)>;
 		//};
 	};
+};
+
+zephyr_udc0: &usb0 {
+    compatible = "atmel,sam0-usb";
+	status = "okay";
+
+    seeed_cdc_acm_uart: seeed_cdc_acm_uart {
+        compatible = "zephyr,cdc-acm-uart";
+        label = "CDC_ACM_0";
+    };
 };
