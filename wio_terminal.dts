@@ -13,8 +13,8 @@
 	compatible = "seeed,wio-terminal";
 
 	chosen {
-		zephyr,console = &sercom2;
-		zephyr,shell-uart = &sercom2;
+		zephyr,console = &seeed_cdc_acm_uart;
+		zephyr,shell-uart = &seeed_cdc_acm_uart;
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
 		zephyr,code-partition = &code_partition;
@@ -113,7 +113,12 @@
 //};
 //
 zephyr_udc0: &usb0 {
+    compatible = "atmel,sam0-usb";
 	status = "okay";
+
+    seeed_cdc_acm_uart: seeed_cdc_acm_uart {
+            compatible = "zephyr,cdc-acm-uart";
+            label = "CDC_ACM_0";
 };
 //
 //&dmac {
